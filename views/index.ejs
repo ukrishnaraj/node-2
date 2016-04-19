@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>login</title>
+  <script src="jquery-1.12.3.js"></script>
+</head>
+
+<body>
+<label>User name</label>
+<input id="email">
+<label>Password</label>
+<input id="password">
+<button id="login">login</button>
+
+<script>
+  jQuery(document).ready(function(){
+    $("#login").click(function(){
+      $.ajax({
+        type:'POST',
+        url:'/post',
+        data:{
+          email:$("#email").val(),
+          password:$("#password").val()
+        },
+        success:function(data){
+          if(data=='success'){
+            alert("yes");
+            window.location.href = '/home';
+          };
+        },
+        error:function(data){
+          alert("error");
+        }
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
